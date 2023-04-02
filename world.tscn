@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmrwghws3jrxs"]
+[gd_scene load_steps=12 format=3 uid="uid://cmrwghws3jrxs"]
 
 [ext_resource type="Texture2D" uid="uid://b4vwqb28pi0s4" path="res://World/GrassBackground.png" id="1_8v6cg"]
 [ext_resource type="PackedScene" uid="uid://iii6e7de648d" path="res://Player/player.tscn" id="2_5xsy8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cgbvd12m2blkj" path="res://World/bush.tscn" id="3_0b5rr"]
 [ext_resource type="Texture2D" uid="uid://d05m3vwuoadtm" path="res://World/DirtTileset.png" id="4_77q7x"]
 [ext_resource type="PackedScene" uid="uid://4nup0dx8man0" path="res://World/grass.tscn" id="6_25vda"]
+[ext_resource type="PackedScene" uid="uid://cuctawmyk4igl" path="res://Enemies/bat.tscn" id="7_8qrx0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_usg34"]
 texture = ExtResource("4_77q7x")
@@ -807,6 +808,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_2q0k6"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Cliff"
 terrain_set_0/terrain_0/color = Color(1, 0.372549, 1, 1)
@@ -871,3 +873,9 @@ position = Vector2(238, 159)
 
 [node name="Grass5" parent="Grass" instance=ExtResource("6_25vda")]
 position = Vector2(257, 161)
+
+[node name="Bat" parent="." instance=ExtResource("7_8qrx0")]
+position = Vector2(147, 155)
+
+[node name="Bat2" parent="." instance=ExtResource("7_8qrx0")]
+position = Vector2(228, 61)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://iii6e7de648d"]
+[gd_scene load_steps=53 format=3 uid="uid://iii6e7de648d"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_c1xlo"]
 [ext_resource type="Texture2D" uid="uid://b6158p325vplr" path="res://Player/Player.png" id="2_dypba"]
+[ext_resource type="PackedScene" uid="uid://otrphpiwfkup" path="res://Hitboxes and Hurtboxes/hitbox.tscn" id="3_36r87"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uqg3e"]
 radius = 4.0
@@ -87,6 +88,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_2kwoo"]
@@ -187,6 +212,30 @@ tracks/1/keys = {
 "method": &"attack_animation_finished"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxPivot:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_x61uw"]
 resource_name = "AttackLeft"
@@ -217,6 +266,30 @@ tracks/1/keys = {
 "args": [],
 "method": &"attack_animation_finished"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxPivot:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_kfxma"]
@@ -249,6 +322,30 @@ tracks/1/keys = {
 "method": &"attack_animation_finished"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxPivot:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_nev67"]
 resource_name = "AttackUp"
@@ -280,6 +377,150 @@ tracks/1/keys = {
 "method": &"attack_animation_finished"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxPivot:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.71239]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_kr7jr"]
+resource_name = "RollDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [55, 56, 57, 58, 59]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack_animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bjjj5"]
+resource_name = "RollLeft"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [50, 51, 52, 53, 54]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"roll_animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_s4lr7"]
+resource_name = "RollRight"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.499828),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"roll_animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gn717"]
+resource_name = "RollUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [45, 46, 47, 48, 49]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.504801),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"roll_animation_finished"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s3ema"]
 _data = {
@@ -292,6 +533,10 @@ _data = {
 "IdleRight": SubResource("Animation_fhdp5"),
 "IdleUp": SubResource("Animation_xt82f"),
 "RESET": SubResource("Animation_x1taa"),
+"RollDown": SubResource("Animation_kr7jr"),
+"RollLeft": SubResource("Animation_bjjj5"),
+"RollRight": SubResource("Animation_s4lr7"),
+"RollUp": SubResource("Animation_gn717"),
 "RunDown": SubResource("Animation_2kwoo"),
 "RunLeft": SubResource("Animation_5k6w8"),
 "RunRight": SubResource("Animation_s2jl2"),
@@ -344,6 +589,29 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_o1ks0")
 blend_point_3/pos = Vector2(0, -1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wahgl"]
+animation = &"RollLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vu73h"]
+animation = &"RollDown"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gk8uc"]
+animation = &"RollRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kq4dj"]
+animation = &"RollUp"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_3vqf8"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_wahgl")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_vu73h")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_gk8uc")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_kq4dj")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wjly4"]
 animation = &"RunLeft"
 
@@ -379,20 +647,30 @@ switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c12bm"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n7gxc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h4nj7"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7tdrm"]
 states/Attack/node = SubResource("AnimationNodeBlendSpace2D_ovhdp")
 states/Attack/position = Vector2(371, 17)
-states/End/position = Vector2(548, 100)
+states/End/position = Vector2(722, 100)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_c16bx")
 states/Idle/position = Vector2(371, 100)
+states/Roll/node = SubResource("AnimationNodeBlendSpace2D_3vqf8")
+states/Roll/position = Vector2(522, 100)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_ja260")
 states/Run/position = Vector2(371, 182)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1xo86"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_6y2gm"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_4fyss"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_hlip1"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_c12bm")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1xo86"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_6y2gm"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_4fyss"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_hlip1"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_c12bm"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_n7gxc"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_h4nj7")]
 graph_offset = Vector2(-23, -11)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_mgqu2"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ngn8f"]
+radius = 11.0
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_c1xlo")
 metadata/_edit_group_ = true
 
@@ -417,4 +695,18 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_mgqu2")
 parameters/Attack/blend_position = Vector2(0, 0.0179641)
 parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Roll/blend_position = Vector2(0.001297, 0.0179641)
 parameters/Run/blend_position = Vector2(0, 0)
+
+[node name="HitboxPivot" type="Marker2D" parent="."]
+position = Vector2(0, -4)
+gizmo_extents = 8.0
+
+[node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource("3_36r87")]
+position = Vector2(14, 8)
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="HitboxPivot/SwordHitbox" index="0"]
+shape = SubResource("CapsuleShape2D_ngn8f")
+
+[editable path="HitboxPivot/SwordHitbox"]

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 100
 const MAX_SPEED = 100
+const ROLL_SPEED = 1.5
 
 enum {
 	MOVE,
@@ -10,6 +11,7 @@ enum {
 }
 
 var state = MOVE
+var roll_vector = Vector2.DOWN
 
 @onready var animationPlayer = $AnimationPlayer
 @onready var animationTree = $AnimationTree
@@ -23,7 +25,7 @@ func _physics_process(_delta):
 		MOVE:
 			move_state()
 		ROLL:
-			pass
+			roll_state()
 		ATTACK:
 			attack_state()
 
@@ -36,9 +38,11 @@ func move_state():
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
+		roll_vector = input_vector
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
 		animationTree.set("parameters/Attack/blend_position", input_vector)
+		animationTree.set("parameters/Roll/blend_position", input_vector)
 		animationState.travel("Run")
 		velocity = input_vector * SPEED
 	else:
@@ -46,14 +50,29 @@ func move_state():
 		animationState.travel("Idle")
 		velocity = Vector2.ZERO
 	
-	move_and_slide()
+	move()
+	
+	if Input.is_action_just_pressed("roll"):
+		state = ROLL
 	
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
 
+func roll_state():
+	velocity = roll_vector * MAX_SPEED * ROLL_SPEED
+	animationState.travel("Roll")
+	move()
+	
+func move():
+	move_and_slide()
+
 func attack_state():
 	velocity = Vector2.ZERO
 	animationState.travel("Attack")
+
+func roll_animation_finished():
+	velocity = Vector2.ZERO
+	state = MOVE
 
 func attack_animation_finished():
 	state = MOVE
